@@ -3,10 +3,12 @@ import React, {useState} from "react";
 import {AiOutlineMenu} from "react-icons/ai";
 import Avatar from "@/app/components/Avatar";
 import MenuItem from "@/app/components/Navbar/MenuItem";
+import registrationModal from "@/app/components/Modals/RegistrationModal";
+import UseRegistrationModal from "@/app/hooks/UseRegistrationModal";
 
 const UserMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const registrationModal = UseRegistrationModal();
     const toggle = () => setIsOpen(!isOpen);
 
     return (
@@ -32,8 +34,7 @@ const UserMenu = () => {
                     <div className="flex flex-col gap-2 cursor-pointer">
                         <MenuItem onClick={() => {
                         }} label="Login"/>
-                        <MenuItem onClick={() => {
-                        }} label="Register"/>
+                        <MenuItem onClick={registrationModal.onOpen} label="Register"/>
                     </div>
                 </div>
             )}

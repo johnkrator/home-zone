@@ -11,11 +11,13 @@ interface IButtonProps {
     icon?: IconType;
 }
 
-const Button: React.FC<IButtonProps> = ({label, onClick, disabled, outline, small, icon: Icon}) => {
+const Button: React.FC<IButtonProps> = ({label = "Continue", onClick, disabled, outline, small, icon: Icon}) => {
     return (
-        <button onClick={onClick}
+        <button onClick={onClick} disabled={disabled}
                 className={`relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition w-full
+                ${outline ? "border-black" : "bg-rose-500"}
                 ${outline ? "text-black" : "text-white"}
+                ${outline ? "text-white" : "bg-rose-500"}
                 ${small ? "text-sm" : "text-md"}
                 ${small ? "py-1" : "py-3"}
                 ${small ? "font-light" : "font-semibold"}

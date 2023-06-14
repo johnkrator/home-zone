@@ -2,6 +2,7 @@ import "./globals.css";
 import {Nunito} from "next/font/google";
 import React from "react";
 import Navbar from "@/app/components/Navbar/Navbar";
+import RegistrationModal from "@/app/components/Modals/RegistrationModal";
 
 const nunito = Nunito({subsets: ["latin"]});
 
@@ -16,6 +17,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <html lang="en">
         <body className={nunito.className}>
         <Navbar/>
+        <RegistrationModal/>
         <div className="container py-4">
             {children}
         </div>
