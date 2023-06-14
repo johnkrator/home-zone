@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import LogoImage from "@/public/images/F95Zone.to_logo_PNG2.png";
+import LogoImage from "@/public/images/logo1.jpg";
 import Image from "next/image";
 import {useRouter} from "next/navigation";
 
@@ -8,8 +8,11 @@ const Logo = () => {
     const router = useRouter();
     return (
         <div className="md:block hidden">
-            {/*<Image src={"Home Zone"} className="object-cover w-20 h-20" alt="logo"/>*/}
-            <h1 onClick={() => router.push("/")}>Home Zone</h1>
+            <Image
+                onClick={() => router.push("/")}
+                src={LogoImage}
+                className="object-cover w-10 h-10 rounded-full cursor-pointer" alt="logo"
+            />
         </div>
     );
 };
