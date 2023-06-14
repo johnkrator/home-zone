@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import LogoImage from "@/public/images/logo1.jpg";
+import LogoImage from "@/public/images/Airbnb_logo_PNG3.png";
 import Image from "next/image";
 import {useRouter} from "next/navigation";
 
@@ -11,7 +11,9 @@ const Logo = () => {
             <Image
                 onClick={() => router.push("/")}
                 src={LogoImage}
-                className="object-cover w-10 h-10 rounded-full cursor-pointer" alt="logo"
+                width={100}
+                height={100}
+                className="lg:block hidden object-cover cursor-pointer" alt="logo"
             />
         </div>
     );

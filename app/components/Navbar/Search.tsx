@@ -6,7 +6,7 @@ const Search = () => {
     return (
         <div className="border-[1px] rounded-full border-gray-300">
             <div
-                className="flex flex-row items-center text-sm gap-3 shadow-md rounded-full px-10 py-3 hover:shadow-lg transition cursor-pointer whitespace-nowrap">
+                className="flex flex-row items-center text-sm gap-3 shadow-md rounded-full px-14 py-4 hover:shadow-lg transition cursor-pointer whitespace-nowrap">
                 <div>
                     <h3>Any where</h3>
                 </div>
@@ -21,7 +21,9 @@ const Search = () => {
 
                 <div className="relative flex items-center">
                     <h3 className="md:block hidden">Any guest</h3>
-                    <BsSearch className="absolute md:top-1 md:left-20 -top-1.5 left-3"/>
+                    <BsSearch
+                        className="absolute md:-top-1 md:left-20 -top-3.5 left-3 bg-rose-500 rounded-full p-2 text-white"
+                        size={30}/>
                 </div>
             </div>
         </div>
