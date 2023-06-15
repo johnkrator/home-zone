@@ -5,10 +5,12 @@ import Avatar from "@/app/components/Avatar";
 import MenuItem from "@/app/components/Navbar/MenuItem";
 import registrationModal from "@/app/components/Modals/RegistrationModal";
 import UseRegistrationModal from "@/app/hooks/UseRegistrationModal";
+import UseLoginModal from "@/app/hooks/UseLoginModal";
 
 const UserMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
     const registrationModal = UseRegistrationModal();
+    const loginModal = UseLoginModal();
     const toggle = () => setIsOpen(!isOpen);
 
     return (
@@ -32,8 +34,7 @@ const UserMenu = () => {
                 <div
                     className="absolute rounded-xl shadow-md w-[40vw] lg:w-[10vw] bg-white overflow-hidden lg:right-32 right-7 top-20 text-sm">
                     <div className="flex flex-col gap-2 cursor-pointer">
-                        <MenuItem onClick={() => {
-                        }} label="Login"/>
+                        <MenuItem onClick={loginModal.onOpen} label="Login"/>
                         <MenuItem onClick={registrationModal.onOpen} label="Register"/>
                     </div>
                 </div>
