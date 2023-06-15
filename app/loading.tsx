@@ -1,10 +1,10 @@
 import React from "react";
-import Loading from "@/app/loading";
+import Loader from "@/app/components/Loader";
 
 const Loading = () => {
     return (
         <div>
-            <Loading/>
+            <Loader/>
         </div>
     );
 };
