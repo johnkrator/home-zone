@@ -13,6 +13,7 @@ import {useRouter} from "next/navigation";
 import loginModal from "@/app/components/Modals/LoginModal";
 import UseLoginModal from "@/app/hooks/UseLoginModal";
 import toast from "react-hot-toast";
+import {signIn} from "next-auth/react";
 
 const RegistrationModal = () => {
     const router = useRouter();
@@ -61,10 +62,8 @@ const RegistrationModal = () => {
 
     const footerContent = (
         <div className="flex flex-col items-center gap-y-2">
-            <Button label="Signup with Google" onClick={() => {
-            }} icon={FcGoogle}/>
-            <Button label="Signup with GitHub" onClick={() => {
-            }} icon={AiFillGithub}/>
+            <Button label="Signup with Google" onClick={() => signIn("google")} icon={FcGoogle}/>
+            <Button label="Signup with GitHub" onClick={() => signIn("github")} icon={AiFillGithub}/>
 
             <div className="flex items-center gap-x-2">
                 <span>Already have an account?</span>
@@ -77,8 +76,7 @@ const RegistrationModal = () => {
         <Modal
             isOpen={registrationModal.isOpen}
             onCLose={registrationModal.onClose}
-            onSubmit={() => {
-            }}
+            onSubmit={handleSubmit(onSubmit)}
             title="Register"
             body={bodyContent}
             footer={footerContent}

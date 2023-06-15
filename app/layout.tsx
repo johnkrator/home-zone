@@ -1,9 +1,13 @@
 import "./globals.css";
 import {Nunito} from "next/font/google";
 import React from "react";
+
 import Navbar from "@/app/components/Navbar/Navbar";
 import RegistrationModal from "@/app/components/Modals/RegistrationModal";
 import LoginModal from "@/app/components/Modals/LoginModal";
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import ToasterProvider from "@/app/providers/ToasterProvider";
+import ClientOnly from "@/app/components/ClientOnly";
 
 const nunito = Nunito({subsets: ["latin"]});
 
@@ -13,13 +17,19 @@ export const metadata = {
     keywords: "home zone, home, zone, place, live, rent, buy, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment, house, apartment"
 };
 
-export default function RootLayout({children}: { children: React.ReactNode }) {
+export default async function RootLayout({children}: { children: React.ReactNode }) {
+    const currentUser = await getCurrentUser();
     return (
         <html lang="en">
         <body className={nunito.className}>
-        <Navbar/>
-        <RegistrationModal/>
-        <LoginModal/>
+
+        <ClientOnly>
+            <ToasterProvider/>
+            <Navbar currentUser={currentUser}/>
+            <RegistrationModal/>
+            <LoginModal/>
+        </ClientOnly>
+
         <div className="container py-4">
             {children}
         </div>

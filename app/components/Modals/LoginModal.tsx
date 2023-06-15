@@ -3,7 +3,6 @@ import React, {useCallback, useState} from "react";
 import Modal from "@/app/components/Modals/Modal";
 import UseRegistrationModal from "@/app/hooks/UseRegistrationModal";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
-import axios from "axios";
 import Heading from "@/app/components/Heading";
 import Input from "@/app/components/Inputs/Input";
 import Button from "@/app/components/Button";
@@ -12,6 +11,7 @@ import {AiFillGithub} from "react-icons/ai";
 import UseLoginModal from "@/app/hooks/UseLoginModal";
 import {useRouter} from "next/navigation";
 import toast from "react-hot-toast";
+import {signIn} from "next-auth/react";
 
 const LoginModal = () => {
     const router = useRouter();
@@ -26,24 +26,24 @@ const LoginModal = () => {
         }
     });
 
-    // const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    //     setIsLoading(true);
-    //
-    //     signIn("credentials", {...data, redirect: false})
-    //         .then((callback) => {
-    //             setIsLoading(false);
-    //
-    //             if (callback?.ok) {
-    //                 toast.success("Logged in successfully!");
-    //                 router.refresh();
-    //                 loginModal.onClose();
-    //             }
-    //
-    //             if (callback?.error) {
-    //                 toast.error(callback?.error);
-    //             }
-    //         });
-    // };
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        setIsLoading(true);
+
+        signIn("credentials", {...data, redirect: false})
+            .then((callback) => {
+                setIsLoading(false);
+
+                if (callback?.ok) {
+                    toast.success("Logged in successfully!");
+                    router.refresh();
+                    loginModal.onClose();
+                }
+
+                if (callback?.error) {
+                    toast.error(callback?.error);
+                }
+            });
+    };
 
     const toggle = useCallback(() => {
         loginModal.onClose();
@@ -60,10 +60,8 @@ const LoginModal = () => {
 
     const footerContent = (
         <div className="flex flex-col items-center gap-y-2">
-            <Button label="Signup with Google" onClick={() => {
-            }} icon={FcGoogle}/>
-            <Button label="Signup with GitHub" onClick={() => {
-            }} icon={AiFillGithub}/>
+            <Button label="Signup with Google" onClick={() => signIn("google")} icon={FcGoogle}/>
+            <Button label="Signup with GitHub" onClick={() => signIn("github")} icon={AiFillGithub}/>
 
             <div className="flex items-center gap-x-2">
                 <span>Don't have an account?</span>
@@ -76,8 +74,7 @@ const LoginModal = () => {
         <Modal
             isOpen={loginModal.isOpen}
             onCLose={loginModal.onClose}
-            onSubmit={() => {
-            }}
+            onSubmit={handleSubmit(onSubmit)}
             title="Login"
             body={bodyContent}
             footer={footerContent}

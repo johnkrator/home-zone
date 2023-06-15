@@ -9,7 +9,12 @@ interface IAvatarProps {
 const Avatar: React.FC<IAvatarProps> = ({src}) => {
     return (
         <div>
-            <Image src={src || Placeholder} className="object-cover rounded-full h-8 w-8" alt="placeholder image"/>
+            <Image
+                src={src || Placeholder}
+                width={30} height={30}
+                className="object-cover rounded-full"
+                alt="placeholder image"
+            />
         </div>
     );
 };
