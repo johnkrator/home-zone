@@ -64,7 +64,7 @@ const LoginModal = () => {
             <Button label="Signup with GitHub" onClick={() => signIn("github")} icon={AiFillGithub}/>
 
             <div className="flex items-center gap-x-2">
-                <span>Don't have an account?</span>
+                <span>Don&apos;t have an account?</span>
                 <span onClick={toggle} className="font-semibold hover:underline cursor-pointer">Register</span>
             </div>
         </div>
