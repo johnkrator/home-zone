@@ -53,15 +53,16 @@ const Modal: React.FC<IModalProps> = ({
         onSubmit && onSubmit();
     }, [disabled, onSubmit]);
 
+    //handles our previous and next buttons
     const handleSecondaryAction = useCallback(() => {
-        if (disabled) {
+        if (disabled || !secondaryAction) {
             return;
         }
-        secondaryAction && secondaryAction();
+        secondaryAction();
     }, [disabled, secondaryAction]);
 
     if (!isOpen) {
-        return;
+        return null;
     }
 
     return (
@@ -94,14 +95,20 @@ const Modal: React.FC<IModalProps> = ({
                             {/*footer*/}
                             <div className="flex flex-col gap-2 p-6">
                                 <div className="flex flex-row items-center gap-4 w-full">
-                                    {secondaryAction && (
+                                    {secondaryAction && secondaryActionLabel && (
                                         <Button
                                             outline
                                             onClick={handleSecondaryAction}
                                             label={secondaryActionLabel}
-                                            disabled={disabled}/>
+                                            disabled={disabled}
+                                        />
                                     )}
-                                    <Button onClick={handleSubmit} label={actionLabel} disabled={disabled}/>
+                                    <Button
+                                        outline
+                                        onClick={handleSubmit}
+                                        label={actionLabel}
+                                        disabled={disabled}
+                                    />
                                 </div>
                                 {footer}
                             </div>
