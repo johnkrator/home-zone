@@ -37,7 +37,7 @@ const UserMenu: React.FC<IUserMenuProps> = ({currentUser}) => {
             {/*dropdown menu*/}
             {isOpen && (
                 <div
-                    className="absolute rounded-xl shadow-md w-[40vw] lg:w-[10vw] bg-white overflow-hidden lg:right-32 right-7 top-20 text-sm">
+                    className="absolute rounded-xl shadow-md w-[40vw] lg:w-[10vw] bg-white overflow-hidden lg:right-20 right-7 top-20 text-sm">
                     <div className="flex flex-col gap-2 cursor-pointer">
                         {currentUser ? (
                             <>
