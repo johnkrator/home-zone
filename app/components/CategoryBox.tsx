@@ -37,7 +37,7 @@ const CategoryBox: React.FC<ICategoryBox> = ({label, icon: Icon, selected}) => {
 
     return (
         <>
-            <div className={`flex flex-col gap-1 lg:p-0 border-b-2 p-2 pt-3 cursor-pointer
+            <div className={`flex flex-col gap-1 lg:p-0 border-b-2 p-2 pt-3 cursor-pointer hover:text-neutral-500 transition duration-300
             ${selected ? "border-b-neutral-800" : "border-b-transparent"}
             ${selected ? "text-neutral-800" : "text-inherit"}
             `}

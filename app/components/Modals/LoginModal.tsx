@@ -73,7 +73,7 @@ const LoginModal = () => {
     return (
         <Modal
             isOpen={loginModal.isOpen}
-            onCLose={loginModal.onClose}
+            onClose={loginModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             title="Login"
             body={bodyContent}
