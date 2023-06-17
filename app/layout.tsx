@@ -7,6 +7,7 @@ import RegistrationModal from "@/app/components/Modals/RegistrationModal";
 import LoginModal from "@/app/components/Modals/LoginModal";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ToasterProvider from "@/app/providers/ToasterProvider";
+import RentModal from "@/app/components/Modals/RentModal";
 
 const nunito = Nunito({subsets: ["latin"]});
 
@@ -25,6 +26,7 @@ export default async function RootLayout({children}: { children: React.ReactNode
         {/*client component*/}
         <ToasterProvider/>
         <Navbar currentUser={currentUser}/>
+        <RentModal/>
         <RegistrationModal/>
         <LoginModal/>
         {/*client component*/}

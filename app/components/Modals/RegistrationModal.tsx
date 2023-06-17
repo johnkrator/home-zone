@@ -75,7 +75,7 @@ const RegistrationModal = () => {
     return (
         <Modal
             isOpen={registrationModal.isOpen}
-            onCLose={registrationModal.onClose}
+            onClose={registrationModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             title="Register"
             body={bodyContent}
