@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import Heading from "@/app/components/Heading";
 import {categories} from "@/app/components/Navbar/Categories";
 import CategoryInput from "@/app/components/Inputs/CategoryInput";
+import CountrySelect from "@/app/components/Inputs/CountrySelect";
 
 enum STEPS {
     CATEGORY = 0,
@@ -105,7 +106,7 @@ const RentModal = () => {
         return "Back";
     }, [step]);
 
-    const bodyContent = (
+    let bodyContent = (
         <div>
             <Heading title="Which of these do you want to rent?" subtitle="Select a category to get started"/>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-3 max-h-[50vh] overflow-y-auto">
@@ -121,6 +122,18 @@ const RentModal = () => {
             </div>
         </div>
     );
+
+    if (step === STEPS.LOCATION) {
+        bodyContent = (
+            <div>
+                <Heading title="Where do you want to rent?" subtitle="Select a location to get started"/>
+                <CountrySelect
+                    value={location}
+                    onChange={(value) => setCustomValue("location", value)}
+                />
+            </div>
+        );
+    }
 
     return (
         <Container>
