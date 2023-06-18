@@ -11,6 +11,7 @@ import Heading from "@/app/components/Heading";
 import {categories} from "@/app/components/Navbar/Categories";
 import CategoryInput from "@/app/components/Inputs/CategoryInput";
 import CountrySelect from "@/app/components/Inputs/CountrySelect";
+import Map from "@/app/components/Map";
 
 enum STEPS {
     CATEGORY = 0,
@@ -125,12 +126,13 @@ const RentModal = () => {
 
     if (step === STEPS.LOCATION) {
         bodyContent = (
-            <div>
+            <div className="flex flex-col gap-8">
                 <Heading title="Where do you want to rent?" subtitle="Select a location to get started"/>
                 <CountrySelect
                     value={location}
                     onChange={(value) => setCustomValue("location", value)}
                 />
+                <Map center={location?.latlng}/>
             </div>
         );
     }
