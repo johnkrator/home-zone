@@ -3,8 +3,8 @@ import React, {useCallback, useState} from "react";
 import {AiOutlineMenu} from "react-icons/ai";
 import Avatar from "@/app/components/Avatar";
 import MenuItem from "@/app/components/Navbar/MenuItem";
-import UseRegistrationModal from "@/app/hooks/UseRegistrationModal";
-import UseLoginModal from "@/app/hooks/UseLoginModal";
+import useRegistrationModal from "@/app/hooks/useRegistrationModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 import {signOut} from "next-auth/react";
 import {SafeUser} from "@/app/types";
 import useRentModal from "@/app/hooks/useRentModal";
@@ -16,8 +16,8 @@ interface IUserMenuProps {
 
 const UserMenu: React.FC<IUserMenuProps> = ({currentUser}) => {
     const [isOpen, setIsOpen] = useState(false);
-    const registrationModal = UseRegistrationModal();
-    const loginModal = UseLoginModal();
+    const registrationModal = useRegistrationModal();
+    const loginModal = useLoginModal();
     const toggle = () => setIsOpen(!isOpen);
     const rentModal = useRentModal();
 
@@ -34,7 +34,7 @@ const UserMenu: React.FC<IUserMenuProps> = ({currentUser}) => {
             <div>
                 <ThemeButton/>
             </div>
-            
+
             <div onClick={rent}>
                 <h3 className="text-sm md:block hidden hover:bg-neutral-100 rounded-full px-4 py-3 cursor-pointer transition duration-300">
                     Create new property

@@ -1,22 +1,22 @@
 "use client";
 import React, {useCallback, useState} from "react";
 import Modal from "@/app/components/Modals/Modal";
-import UseRegistrationModal from "@/app/hooks/UseRegistrationModal";
+import useRegistrationModal from "@/app/hooks/useRegistrationModal";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 import Heading from "@/app/components/Heading";
 import Input from "@/app/components/Inputs/Input";
 import Button from "@/app/components/Button";
 import {FcGoogle} from "react-icons/fc";
 import {AiFillGithub} from "react-icons/ai";
-import UseLoginModal from "@/app/hooks/UseLoginModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 import {useRouter} from "next/navigation";
 import toast from "react-hot-toast";
 import {signIn} from "next-auth/react";
 
 const LoginModal = () => {
     const router = useRouter();
-    const registerModal = UseRegistrationModal();
-    const loginModal = UseLoginModal();
+    const registerModal = useRegistrationModal();
+    const loginModal = useLoginModal();
     const [isLoading, setIsLoading] = useState(false);
 
     const {register, handleSubmit, formState: {errors}} = useForm<FieldValues>({
