@@ -12,6 +12,9 @@ import {categories} from "@/app/components/Navbar/Categories";
 import CategoryInput from "@/app/components/Inputs/CategoryInput";
 import CountrySelect from "@/app/components/Inputs/CountrySelect";
 import Map from "@/app/components/Map";
+import Counter from "@/app/components/Inputs/Counter";
+import ImageUpload from "@/app/components/Inputs/ImageUpload";
+import Input from "@/app/components/Inputs/Input";
 
 enum STEPS {
     CATEGORY = 0,
@@ -108,7 +111,7 @@ const RentModal = () => {
     }, [step]);
 
     let bodyContent = (
-        <div className='flex flex-col gap-8'>
+        <div className="flex flex-col gap-8">
             <Heading title="Which of these do you want to rent?" subtitle="Select a category to get started"/>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-3 max-h-[50vh] overflow-y-auto">
                 {categories.map((item) => (
@@ -134,6 +137,71 @@ const RentModal = () => {
                     onChange={(value) => setCustomValue("location", value)}
                 />
                 <Map center={location?.latlng}/>
+            </div>
+        );
+    }
+
+    if (step === STEPS.INFO) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading title="Let us know more about your listing" subtitle="What facilties are available?"/>
+                <Counter
+                    title="Guests"
+                    subtitle="How many guests are allowed?"
+                    value={guestCount}
+                    onChange={(value) => setCustomValue("guestCount", value)}
+                />
+                <hr/>
+                <Counter
+                    title="Rooms"
+                    subtitle="How many rooms are available?"
+                    value={roomCount}
+                    onChange={(value) => setCustomValue("roomCount", value)}
+                />
+                <hr/>
+                <Counter
+                    title="Bathrooms"
+                    subtitle="How many bathrooms are available?"
+                    value={bathroomCount}
+                    onChange={(value) => setCustomValue("bathroomCount", value)}
+                />
+                <hr/>
+            </div>
+        );
+    }
+
+    if (step === STEPS.IMAGES) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading title="Add a picture to your listing" subtitle="Show guests what you have available"/>
+                <ImageUpload
+                    onChange={(value) => setCustomValue("imageSrc", value)}
+                    value={imageSrc}
+                />
+            </div>
+        );
+    }
+
+    if (step === STEPS.DESCRIPTION) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading title="How would you describe your listing" subtitle="Tell guests what you have available"/>
+                
+                <Input id="title" label="Title" register={register} errors={errors} required/>
+                <hr/>
+
+                <Input id="description" label="Description" register={register} errors={errors} required/>
+                <hr/>
+            </div>
+        );
+    }
+
+    if (step === STEPS.PRICE) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading title="How much do you want to pay?" subtitle="Tell guests what you have available"/>
+                <Input formatPrice type="number" id="price" disabled={isLoading} label="Price" register={register}
+                       errors={errors} required/>
             </div>
         );
     }
