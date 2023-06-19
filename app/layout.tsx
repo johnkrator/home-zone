@@ -33,7 +33,7 @@ export default async function RootLayout({children}: { children: React.ReactNode
             <LoginModal/>
             {/*client component*/}
 
-            <div className="container py-4">
+            <div className="py-4">
                 {children}
             </div>
         </Providers>
