@@ -108,13 +108,14 @@ const RentModal = () => {
     }, [step]);
 
     let bodyContent = (
-        <div>
+        <div className='flex flex-col gap-8'>
             <Heading title="Which of these do you want to rent?" subtitle="Select a category to get started"/>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-3 max-h-[50vh] overflow-y-auto">
                 {categories.map((item) => (
                     <div key={item.label}>
                         <CategoryInput
                             icon={item.icon}
+                            selected={category === item.label}
                             label={item.label}
                             onClick={(category) => setCustomValue("category", category)}
                         />

@@ -6,10 +6,10 @@ interface ILoginStore {
     onClose: () => void;
 }
 
-const UseLoginModal = create<ILoginStore>((set) => ({
+const useLoginModal = create<ILoginStore>((set) => ({
     isOpen: false,
     onOpen: () => set({isOpen: true}),
     onClose: () => set({isOpen: false}),
 }));
 
-export default UseLoginModal;
+export default useLoginModal;
