@@ -1,18 +1,21 @@
-"use client";
 import React from "react";
 import Container from "@/app/components/Container";
 import EmptyState from "@/app/components/EmptyState";
+import getListingById from "@/app/actions/getListingById";
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import ListingClient from "@/app/listings/[listingId]/ListingClient";
+import getReservations from "@/app/actions/getReservations";
 
 interface IParams {
     listingId?: string;
 }
 
 const ListingPage = async ({params}: { params: IParams }) => {
-    // const listing = await getListingById(params);
-    // const currentUser = await getCurrentUser();
-    const isEmpty = true;
+    const listing = await getListingById(params);
+    const reservation = await getReservations(params);
+    const currentUser = await getCurrentUser();
 
-    if (isEmpty) {
+    if (!listing) {
         return (
             <EmptyState/>
         );
@@ -20,7 +23,7 @@ const ListingPage = async ({params}: { params: IParams }) => {
 
     return (
         <Container>
-            ListingPage
+            <ListingClient listing={listing} currentUser={currentUser} reservations={reservation}/>
         </Container>
     );
 };
