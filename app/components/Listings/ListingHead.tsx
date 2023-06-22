@@ -4,6 +4,7 @@ import {SafeUser} from "@/app/types";
 import useCountries from "@/app/hooks/useCountries";
 import Heading from "@/app/components/Heading";
 import Image from "next/image";
+import HeartButton from "@/app/components/HeartButton";
 
 interface IListingHeadProps {
     title: string;
@@ -22,6 +23,9 @@ const ListingHead: React.FC<IListingHeadProps> = ({title, locationValue, imageSr
             <Heading title={title} subtitle={`${location?.region},${location?.label}`}/>
             <div className="w-full h-[60vh] overflow-hidden relative">
                 <Image src={imageSrc} fill className="object-cover w-full rounded-xl" alt="property image"/>
+                <div className="absolute top-5 right-5">
+                    <HeartButton listingId={id} currentUser={currentUser}/>
+                </div>
             </div>
         </div>
     );

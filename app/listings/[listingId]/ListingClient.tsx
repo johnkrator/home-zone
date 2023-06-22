@@ -101,7 +101,7 @@ const ListingClient: React.FC<IListingClientProps> = ({reservations = [], listin
                     id={listing.id} currentUser={currentUser}
                 />
 
-                <div className="">
+                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10 mt-6">
                     <ListingInfo
                         user={listing.user}
                         category={category}
@@ -111,18 +111,18 @@ const ListingClient: React.FC<IListingClientProps> = ({reservations = [], listin
                         bathroomCount={listing.bathroomCount}
                         locationValue={listing.locationValue}
                     />
-                </div>
 
-                <div className="">
-                    <ListingReservation
-                        price={listing.price}
-                        totalPrice={totalPrice}
-                        dateRange={dateRange}
-                        onChangeDate={(value) => setDateRange(value)}
-                        disabledDate={disableDates}
-                        onSubmit={onCreateReservation}
-                        disabled={isLoading}
-                    />
+                    <div className="">
+                        <ListingReservation
+                            price={listing.price}
+                            totalPrice={totalPrice}
+                            dateRange={dateRange}
+                            onChangeDate={(value) => setDateRange(value)}
+                            disabledDate={disableDates}
+                            onSubmit={onCreateReservation}
+                            disabled={isLoading}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
