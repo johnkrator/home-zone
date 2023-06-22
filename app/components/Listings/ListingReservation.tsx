@@ -24,7 +24,7 @@ const ListingReservation: React.FC<IListingReservationProps> = ({
                                                                     disabledDate
                                                                 }) => {
     return (
-        <div className="bg-white rounded-xl border-neutral-200">
+        <div className="bg-inherit flex flex-col gap-4">
             <div className="flex items-center flex-row gap-1 p-4">
                 <div className="font-semibold text-2xl">{price}</div>
                 <div>night</div>
