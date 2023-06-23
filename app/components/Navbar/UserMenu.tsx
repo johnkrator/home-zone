@@ -9,6 +9,7 @@ import {signOut} from "next-auth/react";
 import {SafeUser} from "@/app/types";
 import useRentModal from "@/app/hooks/useRentModal";
 import ThemeButton from "@/app/components/DarkMode/ThemeButton";
+import {useRouter} from "next/navigation";
 
 interface IUserMenuProps {
     currentUser?: SafeUser | null;
@@ -20,6 +21,7 @@ const UserMenu: React.FC<IUserMenuProps> = ({currentUser}) => {
     const loginModal = useLoginModal();
     const toggle = () => setIsOpen(!isOpen);
     const rentModal = useRentModal();
+    const router = useRouter();
 
     const rent = useCallback(() => {
         if (!currentUser) {
@@ -56,14 +58,10 @@ const UserMenu: React.FC<IUserMenuProps> = ({currentUser}) => {
                     <div className="flex flex-col gap-2 cursor-pointer">
                         {currentUser ? (
                             <>
-                                <MenuItem onClick={() => {
-                                }} label="My Trips"/>
-                                <MenuItem onClick={() => {
-                                }} label="My Reservations"/>
-                                <MenuItem onClick={() => {
-                                }} label="My Favorites"/>
-                                <MenuItem onClick={() => {
-                                }} label="My Properties"/>
+                                <MenuItem onClick={() => router.push("/trips")} label="My Trips"/>
+                                <MenuItem onClick={() => router.push("/reservations")} label="My Reservations"/>
+                                <MenuItem onClick={() => router.push("/favorites")} label="My Favorites"/>
+                                <MenuItem onClick={() => router.push("/properties")} label="My Properties"/>
                                 <MenuItem onClick={rent} label="Create new property"/>
                                 <hr/>
                                 <MenuItem onClick={() => signOut()} label="Logout"/>
