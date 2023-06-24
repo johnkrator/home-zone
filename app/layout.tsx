@@ -9,6 +9,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import ToasterProvider from "@/app/providers/ToasterProvider";
 import RentModal from "@/app/components/Modals/RentModal";
 import Providers from "@/app/components/DarkMode/Providers";
+import SearchModal from "@/app/components/Modals/SearchModal";
 
 const nunito = Nunito({subsets: ["latin"]});
 
@@ -20,6 +21,7 @@ export const metadata = {
 
 export default async function RootLayout({children}: { children: React.ReactNode }) {
     const currentUser = await getCurrentUser();
+
     return (
         <html lang="en">
         <body className={nunito.className}>
@@ -28,6 +30,7 @@ export default async function RootLayout({children}: { children: React.ReactNode
             {/*client component*/}
             <ToasterProvider/>
             <Navbar currentUser={currentUser}/>
+            <SearchModal/>
             <RentModal/>
             <RegistrationModal/>
             <LoginModal/>
