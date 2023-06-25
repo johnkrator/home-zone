@@ -27,19 +27,19 @@ export default async function getListings(params: IListingParams) {
         if (roomCount) {
             query.roomCount = {
                 gte: +roomCount
-            }
+            };
         }
 
         if (guestCount) {
             query.guestCount = {
                 gte: +guestCount
-            }
+            };
         }
 
         if (bathroomCount) {
             query.bathroomCount = {
                 gte: +bathroomCount
-            }
+            };
         }
 
         if (locationValue) {
@@ -48,7 +48,7 @@ export default async function getListings(params: IListingParams) {
 
         if (startDate && endDate) {
             query.NOT = {
-                reservations: {
+                reservation: {
                     some: {
                         OR: [
                             {
@@ -62,7 +62,7 @@ export default async function getListings(params: IListingParams) {
                         ]
                     }
                 }
-            }
+            };
         }
 
         // handles returning all listings for a user from the database to the main home page
@@ -76,7 +76,7 @@ export default async function getListings(params: IListingParams) {
         const safeListings = listings.map((listing) => ({
             ...listing,
             createdAt: listing.createdAt.toISOString()
-        }))
+        }));
 
         return safeListings;
     } catch (error: any) {
