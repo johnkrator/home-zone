@@ -10,6 +10,7 @@ import ToasterProvider from "@/app/providers/ToasterProvider";
 import RentModal from "@/app/components/Modals/RentModal";
 import Providers from "@/app/components/DarkMode/Providers";
 import SearchModal from "@/app/components/Modals/SearchModal";
+import Footer from "@/app/components/Footer/Footer";
 
 const nunito = Nunito({subsets: ["latin"]});
 
@@ -36,8 +37,14 @@ export default async function RootLayout({children}: { children: React.ReactNode
             <LoginModal/>
             {/*client component*/}
 
-            <div className="py-4">
-                {children}
+            <div className="min-h-screen flex flex-col">
+                <div className="flex-grow py-4">
+                    {children}
+                </div>
+
+                <div className="mt-auto">
+                    <Footer/>
+                </div>
             </div>
         </Providers>
         </body>
