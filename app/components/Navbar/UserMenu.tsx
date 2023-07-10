@@ -34,7 +34,7 @@ const UserMenu: React.FC<IUserMenuProps> = ({currentUser}) => {
     return (
         <div className="flex items-center gap-4">
             <div>
-                <ThemeButton/>
+                {/*<ThemeButton/>*/}
             </div>
 
             <div onClick={rent}>
