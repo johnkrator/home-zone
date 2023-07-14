@@ -8,7 +8,6 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import {signOut} from "next-auth/react";
 import {SafeUser} from "@/app/types";
 import useRentModal from "@/app/hooks/useRentModal";
-import ThemeButton from "@/app/components/DarkMode/ThemeButton";
 import {useRouter} from "next/navigation";
 
 interface IUserMenuProps {
@@ -33,10 +32,6 @@ const UserMenu: React.FC<IUserMenuProps> = ({currentUser}) => {
 
     return (
         <div className="flex items-center gap-4">
-            <div>
-                {/*<ThemeButton/>*/}
-            </div>
-
             <div onClick={rent}>
                 <h3 className="text-sm md:block hidden hover:bg-neutral-100 rounded-full px-4 py-3 cursor-pointer transition duration-300">
                     Create new property
