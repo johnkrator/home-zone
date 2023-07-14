@@ -8,7 +8,6 @@ import LoginModal from "@/app/components/Modals/LoginModal";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ToasterProvider from "@/app/providers/ToasterProvider";
 import RentModal from "@/app/components/Modals/RentModal";
-import Providers from "@/app/components/DarkMode/Providers";
 import SearchModal from "@/app/components/Modals/SearchModal";
 import Footer from "@/app/components/Footer/Footer";
 
@@ -27,26 +26,24 @@ export default async function RootLayout({children}: { children: React.ReactNode
         <html lang="en">
         <body className={nunito.className}>
 
-        <Providers>
-            {/*client component*/}
-            <ToasterProvider/>
-            <Navbar currentUser={currentUser}/>
-            <SearchModal/>
-            <RentModal/>
-            <RegistrationModal/>
-            <LoginModal/>
-            {/*client component*/}
+        {/*client component*/}
+        <ToasterProvider/>
+        <Navbar currentUser={currentUser}/>
+        <SearchModal/>
+        <RentModal/>
+        <RegistrationModal/>
+        <LoginModal/>
+        {/*client component*/}
 
-            <div className="min-h-screen flex flex-col">
-                <div className="flex-grow py-4">
-                    {children}
-                </div>
-
-                <div className="mt-auto">
-                    <Footer/>
-                </div>
+        <div className="min-h-screen flex flex-col">
+            <div className="flex-grow py-4">
+                {children}
             </div>
-        </Providers>
+
+            <div className="mt-auto">
+                <Footer/>
+            </div>
+        </div>
         </body>
         </html>
     );
